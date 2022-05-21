@@ -4,32 +4,32 @@ public class UsuarioLogin {
 
 	private long id;
 	
-	private String name;
+	private String nome;
 	
-	private String user;
+	private String usuario;
 	
-	private String password;
+	private String senha;
 	
-	private String photo;
+	private String foto;
 	
-	private String type;
+	private String tipo;
 	
 	private String token;
 	
 
-	public UsuarioLogin(long id, String name, String user, String password, String photo, String type, String token) {
+	public UsuarioLogin(long id, String nome, String usuario, String senha, String foto, String tipo, String token) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.user = user;
-		this.password = password;
-		this.photo = photo;
-		this.type = type;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+		this.tipo = tipo;
 		this.token = token;
 	}
 	
 	public UsuarioLogin() {
-		super();
+		
 	}
 
 	public long getId() {
@@ -40,44 +40,44 @@ public class UsuarioLogin {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	
-	public String getType() {
-		return type;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getToken() {

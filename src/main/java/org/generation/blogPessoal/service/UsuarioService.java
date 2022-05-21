@@ -21,12 +21,12 @@ public class UsuarioService {
 
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 
-		if (usuarioRepository.findByUser(usuario.getUser())
+		if (usuarioRepository.findByUser(usuario.getUsuario())
 			.isPresent())
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, 
 			"Usuário já existe!", null);
 
-		usuario.setPassword(criptografarSenha(usuario.getPassword()));
+		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
 		return Optional.of(usuarioRepository.save(usuario));
 	}
@@ -35,7 +35,7 @@ public class UsuarioService {
 
 		if (usuarioRepository.findById(usuario.getId()).isPresent()) {
 			Optional<Usuario> buscaUsuario = usuarioRepository.
-			findByUser(usuario.getUser());
+			findByUser(usuario.getUsuario());
 
 			if (buscaUsuario.isPresent()) {				
 				if (buscaUsuario.get().getId() != usuario.getId())
@@ -43,7 +43,7 @@ public class UsuarioService {
 					 "Usuário já existe!", null);
 			}
 			
-			usuario.setPassword(criptografarSenha(usuario.getPassword()));
+			usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
 			return Optional.of(usuarioRepository.save(usuario));
 		} 
@@ -56,19 +56,19 @@ public class UsuarioService {
 		Optional<UsuarioLogin> usuarioLogin) {
 		
 		Optional<Usuario> usuario = usuarioRepository
-		.findByUser(usuarioLogin.get().getUser());
+		.findByUser(usuarioLogin.get().getUsuario());
 
 		if (usuario.isPresent()) {
-			if (compararSenhas(usuarioLogin.get().getPassword(), 
-				usuario.get().getPassword())) {
+			if (compararSenhas(usuarioLogin.get().getSenha(), 
+				usuario.get().getSenha())) {
 
 				usuarioLogin.get().setId(usuario.get().getId());				
-				usuarioLogin.get().setName(usuario.get().getName());
-				usuarioLogin.get().setPhoto(usuario.get().getPhoto());
+				usuarioLogin.get().setNome(usuario.get().getNome());
+				usuarioLogin.get().setFoto(usuario.get().getFoto());
 				usuarioLogin.get().setToken(
-				gerarBasicToken(usuarioLogin.get().getUser(), 
-				usuarioLogin.get().getPassword()));
-				usuarioLogin.get().setPassword(usuario.get().getPassword());
+				gerarBasicToken(usuarioLogin.get().getUsuario(), 
+				usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setSenha(usuario.get().getSenha());
 
 				return usuarioLogin;
 
